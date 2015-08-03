@@ -1,20 +1,14 @@
 # Odinbook
 
-[Odinbook](https://dna-odinbook.herokuapp.com/ "Odinbook") is a [test-driven development](http://en.wikipedia.org/wiki/Test-driven_development "Test Driven Development") of a Facebook clone. It was created as the final project for The Odin Project's [Ruby on Rails](http://www.theodinproject.com/ruby-on-rails/final-project "Ruby on Rails Final Project") and [Javascript and jQuery](http://www.theodinproject.com/javascript-and-jquery/final-project "Javascript jQuery Final Project") courses.
+[Odinbook](https://sikchi-odinbook.herokuapp.com/ "Odinbook") is a [test-driven development](http://en.wikipedia.org/wiki/Test-driven_development "Test Driven Development") of a Facebook clone. It was created as the final project for The Odin Project's [Ruby on Rails](http://www.theodinproject.com/ruby-on-rails/final-project "Ruby on Rails Final Project") and [Javascript and jQuery](http://www.theodinproject.com/javascript-and-jquery/final-project "Javascript jQuery Final Project") courses.
 
 See the log in/sign up page below
 
 ![Odinbook Log In/Sign Up page](/public/assets/images/login_signup.png "Odinbook Log In/Sign Up page")
 
-### [_See Odinbook on Heroku here_](https://dna-odinbook.herokuapp.com/ "Odinbook")
+### [_See Odinbook on Heroku here_](https://sikchi-odinbook.herokuapp.com/ "Odinbook")
 
-You are encouraged to create an account, but if you want to get a feel of Odinbook first, you may log in with any of the following emails (all having a password of `password`):
-
-- socrates@example.com
-- plato@example.com
-- aristotle@example.com
-- locke@example.com
-- nietzsche@example.com
+You are encouraged to create an account.
 
 ## Tests
 
@@ -51,7 +45,7 @@ The details of main features below states which main features have these enhance
 
 Authentication checks permit a non-logged in user to see only the log in/sign up page and static pages. Log in/sign up is done with [Devise](https://github.com/plataformatec/devise "Devise") including Facebook log in/sign up using [OmniAuth with Devise](https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview "OmniAuth: Overview").
 
-Static pages include: [_About_](https://dna-odinbook.herokuapp.com/about "About"), [_Contact/Help_](https://dna-odinbook.herokuapp.com/contact_help "Contact or Help"), [_Privacy Policy_](https://dna-odinbook.herokuapp.com/privacy "Privacy Policy"), and [_Terms of Service_](https://dna-odinbook.herokuapp.com/terms "Terms of Service").
+Static pages include: [_About_](https://sikchi-odinbook.herokuapp.com/about "About"), [_Contact/Help_](https://sikchi-odinbook.herokuapp.com/contact_help "Contact or Help"), [_Privacy Policy_](https://sikchi-odinbook.herokuapp.com/privacy "Privacy Policy"), and [_Terms of Service_](https://sikchi-odinbook.herokuapp.com/terms "Terms of Service").
 
 #### Friending
 
@@ -125,4 +119,4 @@ A little unobtrusive Javascript is also used to
 
 ---
 
-If you've made it through reading all this, congratulation...now you really should head over to [**_Odinbook_**](https://dna-odinbook.herokuapp.com/ "Odinbook").
+If you've made it through reading all this, congratulation...now you really should head over to [**_Odinbook_**](https://sikchi-odinbook.herokuapp.com/ "Odinbook").
