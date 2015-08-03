@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def signup_welcome(user)
     configure_signup_flash(user)
-    UserMailer.welcome_email(user).deliver
+    #UserMailer.welcome_email(user).deliver     cinw
   end
 
 
