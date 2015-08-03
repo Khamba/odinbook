@@ -1,0 +1,69 @@
+- provide(:title, @profile.user.name)
+
+.profile-container
+  %h2 Edit Profile
+
+  = render "form_errors", profile: @profile
+
+  .edit-profile-form
+    = form_for @profile, html: { multipart: true } do |f|
+      .general
+        %div{class: ("field_with_errors" if @profile.errors.any?)}
+          = f.label :picture
+          = f.file_field :picture
+
+        - if @profile.picture?
+          .delete-picture
+            = f.check_box :delete_picture
+            = f.label :delete_picture, "Delete Current Picture"
+
+        .bday
+          = f.label :birthday
+          = f.date_select :birthday, discard_year: true, 
+                           use_short_month: true, prompt: true
+
+        %div
+          = f.label :country
+          = f.country_select :country, priority_countries: ["US"], 
+                              prompt: "Select Country", include_blank: true
+
+        %div
+          = f.label :education
+          = f.select :education, get_education_options, 
+                      prompt: "Select Education Level", include_blank: true
+
+        %div
+          = f.label :profession
+          = f.select :profession, get_profession_options, 
+                      prompt: "Select Profession", include_blank: true
+
+        %div
+          = f.label :about_you
+          = f.text_area :about_you
+
+      .privacy
+        %h3 Privacy
+        %div
+          %span Who can view your Profile and Posts
+          = f.radio_button :access_to, ACCESS[:all]
+          = f.label :access_to_all_users, ACCESS[:all]
+          = f.radio_button :access_to, ACCESS[:friends]
+          = f.label :access_to_friends, ACCESS[:friends]
+
+        %div
+          %span Receive email of notifications?
+          = f.radio_button :email_notification, true
+          = f.label :email_notification_true, "Yes"
+          = f.radio_button :email_notification, false
+          = f.label :email_notification_false, "No"
+
+      .center
+        = f.submit class: "primary-btn"
+        = link_to "Cancel", @profile, class: "default-btn"
+
+  = button_to "Delete Odinbook Account", registration_path(current_user),   |
+      data: { confirm: "This will completely delete your entire Odinbook "  |
+                       "account (not just your profile). \n There will be " |
+                       "no way to recover any part of your account. \n "    |
+                       "Are you absolutely sure you want to proceed?" },    |
+      method: :delete, class: "destroy-btn"                                 |

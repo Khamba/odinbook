@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title= page_title(yield(:title))
+    = stylesheet_link_tag 'application', media: 'all', 
+                                        'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = favicon_link_tag 'favicon.ico'
+  %body{ class: "#{params[:controller]}".gsub('devise/', '') }
+    %header= yield :header
+
+    - if user_signed_in?
+      .header-margin
+
+    .main-holder
+      .main-container
+        - if user_signed_in?
+          .profile= yield(:profile) if content_for?(:profile)
+          = render "layouts/flash"
+          .info-container
+            .sidebar>= yield(:sidebar) if content_for?(:sidebar)
+            .content= yield
+        - else
+          = render "layouts/flash"
+          .signup-container
+            = yield(:signup) if content_for?(:signup)
+            .static-container
+              = yield
+    
+    = render "layouts/footer", controller: params[:controller]
+
+    / = debug(params) if Rails.env.development?

@@ -1,0 +1,19 @@
+- user = (@profile && @profile.user) || User.find(@receiver_id)
+
+.profile-banner
+  .banner-top
+    %span= link_to "#{user.name}", timeline_path(user)
+    .friend-status{id: "friend-status-#{user.id}"}
+      = display_friend_status_of(user)
+
+  .banner-bottom
+    %ul
+      %li>= link_to "Timeline", timeline_path(user)
+      - if access_level?(user, :public)
+        %li>= link_to "About", profile_path(user.profile)
+        %li
+          = link_to friends_path(user, from: "profile") do
+            %span Friends
+            %span.friend-count= user.friends.count
+  .profile-pic
+    = render "layouts/banner_image", user: user

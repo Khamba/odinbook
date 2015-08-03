@@ -1,0 +1,10 @@
+- provide(:title, "Your Notifications")
+
+.notifications
+  %h1 Your Notifications
+
+  %ul.notification-list
+    = render @notifications
+
+    - if @notifications.empty?
+      %li.empty-list= "You have no Notifications" 

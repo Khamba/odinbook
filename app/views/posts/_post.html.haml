@@ -1,0 +1,24 @@
+- creator  = post.creator
+- receiver = post.receiver
+%li.post-container{ id: "post-#{post.id}" }
+  .post-details
+    = render "posts/post_delete", post: post, creator: creator, receiver: receiver
+
+    = render "posts/post_top", creator: creator, receiver: receiver, post: post
+
+    %p= post.content
+
+    .post-like{ id: "post-#{post.id}-like" }
+      = render "likes/like_link", likeable_id: post.id, likeable_type: "Post"
+    %span.post-comment
+      = render "posts/post_comment_link", creator: creator, receiver: receiver
+
+  %div{ id: "post-#{post.id}-likers" }
+    = render "posts/post_likers", post: post
+
+  %ul.comment-list{ id: "post-#{post.id}-comments", class: "new" }
+    - if post.comments.any?
+      = render post.comments.order(created_at: :asc)
+
+  - if access_level?(creator, :friend) || access_level?(receiver, :friend)
+    = render template: "comments/new", locals: {post: post}

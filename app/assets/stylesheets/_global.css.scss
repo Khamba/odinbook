@@ -1,0 +1,330 @@
+/*
+  ========================================
+  Vendor Prefixes
+  ========================================
+*/
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin box-sizing($box) {
+  -webkit-box-sizing: $box;
+     -moz-box-sizing: $box;
+          box-sizing: $box;
+}
+@mixin linear-gradient($color1, $color2) {
+  background: -webkit-linear-gradient($color1, $color2);
+  background:    -moz-linear-gradient($color1, $color2);
+  background:         linear-gradient($color1, $color2);
+}
+
+/*
+  ========================================
+  Grid
+  ========================================
+*/
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+.main-holder {
+  @extend .clearfix;
+}
+.main-container {
+  @extend .container;
+}
+.info-container {
+  padding-top: 12px;
+}
+.sidebar,
+.content {
+  display: inline-block;
+  vertical-align: top;
+}
+.sidebar {
+  width: $sidebar-width;
+  margin-left: 8px;
+}
+.content {
+  width: $content-width;
+  margin-left: 11px;
+  margin-right: 10px;
+}
+
+/*
+  ========================================
+  General
+  ========================================
+*/
+html,
+body { 
+  height: 100%; 
+}
+body {
+  color: $color;
+  background-color: $bg-color;
+  font-family: $font-family;
+  font-size: 12px;
+}
+header {
+  background-color: $blue;
+  width: 100%;
+}
+.container{
+  width: 980px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/*
+  ========================================
+  Message
+  ========================================
+*/
+.ui-dialog-title { color: red; }
+.flash-holder {
+  position: relative;
+  top: 10px;
+  margin-bottom: 10px;
+}
+.flash {
+  max-width: 610px;
+  padding: 10px;
+  border: 1px solid;
+  margin: 0 auto;
+  font-size: 11px;
+  a {
+    color: $blue;
+    font-size: 13px;
+    padding-left: 15px;
+  }
+}
+.alert {
+  border-color: #dd3c10;
+  background-color: #ffebe8;
+}
+.notice {
+  border-color: #e2c822;
+  background-color: #fff9d7;
+}
+
+/*
+  ========================================
+  Form
+  ========================================
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: 0;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
+}
+/* Buttons */
+.btn {
+  font-weight: bold;
+  text-align: center;
+  height: 22px;
+  line-height: 22px;
+  border: 1px solid;
+  cursor: pointer;
+  display: inline-block;
+}
+.alt-btn {
+  @extend .btn;
+  color: #fff;
+  background-color: #5b74a8;
+  border-color: #2f477a #29447e #1a356e;
+  padding: 0 6px;
+  font-size: 11px;
+  line-height: 13px;
+}
+.main-btn {
+  @extend .btn;
+  padding: 0 8px;
+  @include border-radius(2px);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  @include box-sizing(content-box);
+  vertical-align: middle;
+  font-size: 12px;
+}
+.primary-btn {
+  @extend .main-btn;
+  color: #fff;
+  background-color: #4e69a2;
+  border-color: #435a8b #3c5488 #334c83;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+}
+.default-btn {
+  @extend .main-btn;
+  background-color: $gray;
+  border-color: #cccccc #c5c6c8 #b6b7b9;
+  color: #4e5665;
+  text-shadow: 0 1px 0 #fff;
+}
+.danger-btn {
+  @extend .default-btn;
+  color: #980113;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/*
+  ========================================
+  Positioning
+  ========================================
+*/
+.vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.dot {
+  position: relative;
+  top: -3px;
+  color: #9197a3;
+}
+.clearfix:after {
+   content: " "; 
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+/*
+  ========================================
+  Images
+  ========================================
+*/
+@mixin image-size($size) {
+  height: $size;
+  width:  $size;
+}
+.v-lg-img { @include image-size(160px); }
+.lg-img   { @include image-size(75px); }
+.md-img   { @include image-size(40px); }
+.sm-img   { @include image-size(32px); }
+.v-sm-img { @include image-size(19px); }
+.like-img {
+  height: 11px;
+  position: relative;
+  top: 1px;
+}
+.delete {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  opacity: 0.2;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/*
+  ========================================
+  Error
+  ========================================
+*/
+#error_explanation {
+  margin: 10px;
+  padding: 10px 20px;
+  border: 1px solid #dd3c10;
+  background-color: #ffebe8;
+  color: #8b0300;
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 14px;
+    color: #8b0300;
+    padding-bottom: 2px;
+  }
+  li {
+    font-size: 14px;
+    padding-left: 15px;
+    padding-top: 3px;
+  }
+}
+.empty-list {
+  color : #373e4d;
+  background-color: #fff;
+  line-height: 1.28;
+  font-size: 12px;
+  padding: 15px 20px;
+  border: 1px solid #e9eaed;
+}
+
+/*
+  ========================================
+  Pagination/Infinite Scroll
+  ========================================
+*/
+.pagination {
+  height: 30px;
+  line-height: 30px;
+
+  em { font-weight: bold; }
+  a, em, span {
+    border: 1px solid;
+    padding: 2px 5px;
+  }
+  a {
+    color: $blue;
+    border-color: $blue;
+    &:hover {
+      text-decoration: none;
+      background-color: $blue;
+      color: #fff;
+    }
+  }
+  em, span {
+    color: $alt-color;
+    border-color: $alt-color;
+  }
+  div { 
+    width: 150px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: $alt-color;
+  }
+  .loading {
+    width: 120px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: $color;
+    padding-top: 5px;
+
+    span { border: none; }
+    span:first-child {
+      display: inline-block; 
+      height: 16px;
+      width: 20px;
+      background: url(loading.gif) no-repeat center;
+      position: relative;
+      top: 2px;
+    }
+  }
+}
